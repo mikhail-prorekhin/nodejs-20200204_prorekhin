@@ -25,7 +25,7 @@ server.on("request", (req, res) => {
       }
       fileSystem.unlinkSync(filepath);
       res.statusCode = 200;
-      res.end("0k");
+      res.end("ok");
       break;
 
     default:
