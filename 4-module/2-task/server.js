@@ -38,14 +38,12 @@ server.on("request", (req, res) => {
         .pipe(writeStream);
 
       req.on("aborted", function() {
-        console.log("Stream aborted");
         res.statusCode = 500;
         fileSystem.unlinkSync(filepath);
         res.end("Abort");
       });
 
       req.once("end", () => {
-        console.log("end");
         res.statusCode = 201;
         res.end("ok");
       });

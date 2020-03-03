@@ -21,7 +21,7 @@ server.on("request", (req, res) => {
       }
       if (!fileSystem.existsSync(filepath)) {
         res.statusCode = 404;
-        res.end(`the file ${pathname} does not exists`);
+        res.end(`the file ${pathname} does not exist`);
         break;
       }
 
