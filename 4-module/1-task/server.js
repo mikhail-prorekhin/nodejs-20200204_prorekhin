@@ -26,7 +26,6 @@ server.on("request", (req, res) => {
       }
 
       const stat = fileSystem.statSync(filepath);
-      //console.log(JSON.stringify(stat));
       res.writeHead(200, {
         "Content-Length": stat.size
       });
