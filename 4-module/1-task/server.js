@@ -20,8 +20,8 @@ server.on("request", (req, res) => {
         break;
       }
       if (!fileSystem.existsSync(filepath)) {
-        res.statusCode = 404;
-        res.end(`file ${pathname} does not exists`);
+        res.statusCode = 409;
+        res.end(`the file ${pathname} does not exists`);
         break;
       }
 
