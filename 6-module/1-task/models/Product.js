@@ -27,22 +27,3 @@ const productSchema = new mongoose.Schema({
 });
 
 module.exports = connection.model("Product", productSchema);
-/**
-- `title`, в этом поле будет находиться название товара, например, "Коляска Adamex Barletta".
-    - строковое
-    - обязательное
-- `description`, описание товара.
-    - строковое
-    - обязательное
-- `price`, цена товара.
-    - числовое
-    - обязательное
-- `category`, идентификатор категории товара.
-    - ObjectId (ref='Category')
-    - обязательное
-- `subcategory`, идентификатор категории товара.
-    - ObjectId
-    - обязательное
-- `images`, массив ссылок изображений
-    - массив строк
- */
