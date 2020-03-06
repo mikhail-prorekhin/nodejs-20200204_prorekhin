@@ -1,35 +1,48 @@
-const mongoose = require('mongoose');
-const connection = require('../libs/connection');
+const mongoose = require("mongoose");
+const connection = require("../libs/connection");
 
 const productSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
 
   description: {
     type: String,
-    required: true,
+    required: true
   },
 
   price: {
     type: Number,
-    required: true,
+    required: true
   },
 
   category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category',
-    required: true,
+    ref: "Category",
+    required: true
   },
 
   subcategory: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
+    required: true
   },
 
-  images: [String],
-
+  images: [String]
 });
+productSchema.index(
+  {
+    title: "text",
+    description: "text"
+  },
+  {
+    weights: {
+      title: 10,
+      description: 5
+    },
+    name: "TextSearchIndex",
+    default_language: "russian"
+  }
+);
 
-module.exports = connection.model('Product', productSchema);
+module.exports = connection.model("Product", productSchema);

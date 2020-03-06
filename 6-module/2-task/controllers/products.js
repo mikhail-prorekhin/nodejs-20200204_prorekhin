@@ -47,8 +47,8 @@ module.exports.productList = async function productList(ctx, next) {
   // let product;
 
   // product = await Product.create({
-  //   title: "Product1",
-  //   description: "Description1",
+  //   title: "aaa bbb ccc",
+  //   description: "xxx yyy",
   //   price: 10,
   //   category: ObjectId("5e60af67a7a90e7b42dd0764"),
   //   subcategory: ObjectId("5e60af67a7a90e7b42dd0765"),
@@ -56,8 +56,8 @@ module.exports.productList = async function productList(ctx, next) {
   // });
 
   // product = await Product.create({
-  //   title: "Product2",
-  //   description: "Description2",
+  //   title: "xxx yyy",
+  //   description: "aaa bbb ccc",
   //   price: 33,
   //   category: ObjectId("5e60af67a7a90e7b42dd0766"),
   //   subcategory: ObjectId("5e60af67a7a90e7b42dd0767"),
