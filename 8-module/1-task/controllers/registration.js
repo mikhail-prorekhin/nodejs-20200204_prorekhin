@@ -7,12 +7,17 @@ module.exports.register = async (ctx, next) => {
   //await User.deleteMany();
 
   const { email, displayName, password } = ctx.request.body;
+
   const verificationToken = uuid();
+  // console.log(
+  //   `____verificationToken____${verificationToken}____________________`
+  // );
   const user = new User({ email, displayName, verificationToken });
   try {
     await user.setPassword(password);
     await user.save();
-    ctx.body = { verificationToken };
+    ctx.body = { status: "ok" };
+    //{ verificationToken };
     ctx.status = 201;
 
     await sendMail({
@@ -22,7 +27,7 @@ module.exports.register = async (ctx, next) => {
       subject: "Подтвердите почту"
     });
   } catch (e) {
-    console.log(`${JSON.stringify(e, null, 2)}`);
+    // console.log(`${JSON.stringify(e, null, 2)}`);
     ctx.status = 400;
     ctx.body = { errors: {} };
     for (let path in e.errors) {
@@ -32,13 +37,23 @@ module.exports.register = async (ctx, next) => {
 };
 
 module.exports.confirm = async (ctx, next) => {
-  console.log(`______${JSON.stringify(ctx.params, null, 2)}______`);
+  const { verificationToken } = ctx.request.body;
+  //const userChanges = { verificationToken: undefined };
+  const user = await User.findOne({ verificationToken });
+
+  //console.log(`______${JSON.stringify(user, null, 2)}______`);
+
+  if (!user) {
+    ctx.status = 400;
+    ctx.body = {
+      error: "Ссылка подтверждения недействительна или устарела"
+    };
+
+    return;
+  }
+  const token = await ctx.login(user);
+  user.verificationToken = undefined;
+  user.save();
+  ctx.body = { token };
+  //console.log(`______${JSON.stringify(user, null, 2)}______`);
 };
-
-/*
-
-POST http://localhost:3000/confirm/f76bbcb6-d945-4c8a-aa8c-e807a43bb04a
-
-###
-
-*/
