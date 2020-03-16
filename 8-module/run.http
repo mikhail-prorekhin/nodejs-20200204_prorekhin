@@ -2,7 +2,7 @@ POST http://localhost:3000/api/confirm
 Content-Type: application/json
 
 {
-"verificationToken": "95c8bf7a-9d50-4aeb-8d34-d3fdadc1116b"
+"verificationToken": "bf8c5b33-c2d5-47da-adad-b82b1d22f49f"
 }
 ###
 
@@ -46,7 +46,7 @@ Authorization: "Bearer 5f26aec3-9f86-4d46-a6c1-5831b581c6fb
 ###
 GET http://localhost:3000/api/orders
 Content-Type: application/json
-Authorization: "Bearer 5f26aec3-9f86-4d46-a6c1-5831b581c6fb
+Authorization: "Bearer bd82956d-73e3-402a-a804-cf6472c06f08
 
 
 ###
@@ -54,6 +54,6 @@ Authorization: "Bearer 5f26aec3-9f86-4d46-a6c1-5831b581c6fb
 
 GET http://localhost:3000/api/messages
 Content-Type: application/json
-Authorization: Bearer 3431dc4fa-4546-4f6a-9213-a8300bae8e68
+Authorization: :Bearer bd82956d-73e3-402a-a804-cf6472c06f08
 
 ###
